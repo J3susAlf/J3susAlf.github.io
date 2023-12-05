@@ -1,6 +1,7 @@
 <?php
 include_once 'Model/Conexion.php';
-include_once 'productos.php';
+include_once 'Model/productos.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,24 +35,30 @@ include_once 'productos.php';
     <main class="container mt-3">
         <section>
             <h1>Bienvenido <?php echo $user->getNombre(); ?></h1>
+                
+
 
             <?php
+            require_once 'ModalAgregar.php';
+            
             $productos = new Productos();
             $resultados  = $productos->obtenerProductos();
 
             if ($resultados->rowCount() > 0) {
-                echo '<table class="table">';
+                echo '<table class="table table-striped table-hover">';
                 echo '  <thead>
                             <tr>
+                            <th>Precio</th>
                             <th>Nombre</th>
                             <th>Cantidad</th>
                             <th>Marca</th>
                             </tr>
                         </thead>';
-                echo '<tbody>';
+                echo '<tbody class=table-group-divider>';
 
                 foreach ($resultados as $resultado) {
                     echo '<tr>';
+                    echo '<td>' . $resultado['Precio'] . '</td>';
                     echo '<td>' . $resultado['Nombre'] . '</td>';
                     echo '<td>' . $resultado['Cantidad'] . '</td>';
                     echo '<td>' . $resultado['Marca'] . '</td>';
@@ -71,6 +78,9 @@ include_once 'productos.php';
         ©<?php echo date("Y"); ?>
     </footer>
     <?php
+
+   
+
     $db = new DB();
     $db->connect();
     ?>

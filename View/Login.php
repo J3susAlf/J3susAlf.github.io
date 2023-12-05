@@ -12,7 +12,7 @@
 
 <body>
     <div class="container d-flex justify-content-center align-items-center mt-5">
-        <form action="" method="POST" class="border p-3 rounded shadow">
+        <form action="" method="POST" class="border p-3 mt-5 rounded shadow">
             <?php
             if (isset($errorLogin)) { ?>
                 <div class="alert alert-danger" role="alert">
